@@ -8,16 +8,16 @@ tutorial: false
 
 logging:
   level: INFO
-  format: "%(levelname)s:%(name)s:%(message)s"
+  format: '%(levelname)s:%(name)s:%(message)s'
 
 remote:
-  ssh: ""
-  path: ""
+  ssh: ''
+  path: ''
 
 # docs in https://pypsa-eur.readthedocs.io/en/latest/configuration.html#run
 run:
-  prefix: ""
-  name: ""
+  prefix: ''
+  name: ''
   scenarios:
     enable: false
     file: config/scenarios.yaml
@@ -33,24 +33,18 @@ foresight: overnight
 # docs in https://pypsa-eur.readthedocs.io/en/latest/configuration.html#scenario
 # Wildcard docs in https://pypsa-eur.readthedocs.io/en/latest/wildcards.html
 scenario:
-  clusters:
-  - 20
+  clusters: 3
   opts:
   - ''
   sector_opts:
   - ''
-  planning_horizons:
-  - 2050
-
-# docs in https://pypsa-eur.readthedocs.io/en/latest/configuration.html#countries
+  planning_horizons: '2050'
 countries:
-- DE
-
-# docs in https://pypsa-eur.readthedocs.io/en/latest/configuration.html#snapshots
+- "DE"
 snapshots:
-  start: "2013-01-01"
-  end: "2014-01-01"
-  inclusive: 'left'
+  start: '2013-01-01'
+  end: '2014-01-01'
+  inclusive: left
 
 # docs in https://pypsa-eur.readthedocs.io/en/latest/configuration.html#enable
 enable:
@@ -113,7 +107,7 @@ electricity:
     enable: false
     by_country: false
 
-  transmission_limit: vopt
+  transmission_limit: v1
 
 # docs in https://pypsa-eur.readthedocs.io/en/latest/configuration.html#atlite
 atlite:
@@ -144,9 +138,9 @@ atlite:
       chunks:
         time: 500
       prepare_kwargs:
-        features: ['temperature', 'height', 'runoff']
+        features: [temperature, height, runoff]
         monthly_requests: true
-        tmpdir: "./cutouts_tmp/"
+        tmpdir: ./cutouts_tmp/
 
 # docs in https://pypsa-eur.readthedocs.io/en/latest/configuration.html#renewable
 renewable:
@@ -403,7 +397,7 @@ biomass:
     not included:
     - Sugar from sugar beet
     - Rape seed
-    - "Sunflower, soya seed "
+    - 'Sunflower, soya seed '
     - Bioethanol barley, wheat, grain maize, oats, other cereals and rye
     - Miscanthus, switchgrass, RCG
     - Willow
@@ -919,9 +913,9 @@ costs:
     fuel: 0
     investment: 0
     lifetime: 25
-    "CO2 intensity": 0
-    "discount rate": 0.07
-    "standing losses": 0
+    CO2 intensity: 0
+    discount rate: 0.07
+    standing losses: 0
   custom_cost_fn: data/custom_costs.csv
   overwrites: {}
   emission_prices:
@@ -956,7 +950,7 @@ clustering:
       ramp_limit_up: max
       ramp_limit_down: max
   temporal:
-    resolution_elec: 12h
+    resolution_elec: 1h
     resolution_sector: 12h
 
 # docs in https://pypsa-eur.readthedocs.io/en/latest/configuration.html#adjustments
@@ -1133,7 +1127,7 @@ solving:
     skip_iterations: true
     rolling_horizon: false
     seed: 123
-    custom_extra_functionality: "../data/custom_extra_functionality.py"
+    custom_extra_functionality: ../data/custom_extra_functionality.py
     # io_api: "direct"  # Increases performance but only supported for the highs and gurobi solvers
     # options that go into the optimize function
     track_iterations: false
@@ -1157,7 +1151,7 @@ solving:
       fractional_last_unit_size: false
     keep_files: false
     model_kwargs:
-      solver_dir: ""
+      solver_dir: ''
 
   agg_p_nom_limits:
     agg_offwind: false
@@ -1179,18 +1173,18 @@ solving:
     highs-default:
       # refer to https://ergo-code.github.io/HiGHS/dev/options/definitions/
       threads: 1
-      solver: "ipm"
-      run_crossover: "off"
+      solver: ipm
+      run_crossover: off
       small_matrix_value: 1e-6
       large_matrix_value: 1e9
       primal_feasibility_tolerance: 1e-5
       dual_feasibility_tolerance: 1e-5
       ipm_optimality_tolerance: 1e-4
-      parallel: "on"
+      parallel: on
       random_seed: 123
     highs-simplex:
-      solver: "simplex"
-      parallel: "on"
+      solver: simplex
+      parallel: on
       primal_feasibility_tolerance: 1e-5
       dual_feasibility_tolerance: 1e-5
       random_seed: 123
